@@ -1,0 +1,8 @@
+prefix=/home/huo/Downloads/beijing_ws/devel
+
+Name: gou
+Description: Description of gou
+Version: 0.0.0
+Cflags: -I/home/huo/Downloads/beijing_ws/src/gou/include
+Libs: -L${prefix}/lib 
+Requires: 

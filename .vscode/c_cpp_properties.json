@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/opt/ros/melodic/**",
+                "/home/huo/Downloads/beijing_ws/src/louti/include/**",
+                "/home/huo/Downloads/beijing_ws/src/po/include/**",
+                "/home/huo/Downloads/beijing_ws/src/louti/include/stairs/**",
+                "/usr/include/**",
+                "/usr/include/pcl-1.8",
+                "/usr/local/include/open3d",
+                "/usr/local/include/open3d/**",
+                "/usr/local/include/open3d/Open3D.h",
+                "/home/huo/.local/share/Trash/files/Open3D/**",
+                "/home/huo/.local/share/Trash/files/Open3D.2/**",
+                "/home/huo/.local/share/Trash/files/Open3D.3/**",
+                "/home/huo/Downloads/Open3D/cpp/open3d/io/**",
+                "/home/huo/Downloads/Open3D/cpp/open3d/**",
+                "/home/huo/Downloads/Open3D/**"
+            ],
+            "name": "ROS"
+        }
+    ],
+    "version": 4
+}

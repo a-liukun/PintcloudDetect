@@ -1,0 +1,8 @@
+<launch>
+    <!-- <node pkg="gou" name="gou" type="gou" output="screen" respawn="true"></node> -->
+    <!-- <node pkg="louti" name="louti" type="louti" output="screen" respawn="true"></node> -->
+    <!-- <node pkg="po" name="po" type="po" output="screen" respawn="true"></node> -->
+    <!-- <node pkg="tai" name="tai" type="tai" output="screen" respawn="true"></node> -->
+    <!-- <node pkg="yanjiao" name="yanjiao" type="yanjiao" output="screen" respawn="true" ></node> -->
+    <!-- <node pkg="cheku" name="cheku" type="cheku" output="screen" respawn="true" ></node> -->
+</launch>

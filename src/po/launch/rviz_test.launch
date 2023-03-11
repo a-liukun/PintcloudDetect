@@ -1,0 +1,8 @@
+<launch>
+     <arg name="my_args" default="1 A"/>
+    <node name="rviz_test" pkg="addcylin" type="addcylin" args="$(arg my_args)" output="screen">
+    </node>
+    <!-- rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find addcylin)/rviz/rviz.rviz">
+    </node>
+</launch>

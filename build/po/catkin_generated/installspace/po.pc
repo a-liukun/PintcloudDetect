@@ -1,0 +1,8 @@
+prefix=/home/huo/Downloads/beijing_ws/install
+
+Name: po
+Description: Description of po
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

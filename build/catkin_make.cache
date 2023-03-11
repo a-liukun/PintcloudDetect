@@ -1,0 +1,2 @@
+gou:louti:po:tai
+-DCATKIN_DEVEL_PREFIX=/home/huo/Downloads/beijing_ws/devel -DCMAKE_INSTALL_PREFIX=/home/huo/Downloads/beijing_ws/install -G Unix Makefiles
