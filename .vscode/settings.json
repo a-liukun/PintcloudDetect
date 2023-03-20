@@ -71,6 +71,8 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "*.ipp": "cpp",
-        "nonlinearoptimization": "cpp"
+        "nonlinearoptimization": "cpp",
+        "future": "cpp",
+        "regex": "cpp"
     }
 }

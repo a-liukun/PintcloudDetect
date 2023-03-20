@@ -206,20 +206,20 @@ louti/CMakeFiles/louti.dir/src/StairVector.cpp.o: \
  /usr/include/eigen3/Eigen/src/Core/IO.h \
  /usr/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h \
  /usr/include/eigen3/Eigen/src/Core/DenseBase.h \
- /usr/include/eigen3/Eigen/src/plugins/BlockMethods.h \
+ /usr/local/include/eigen3/Eigen/src/plugins/BlockMethods.h \
  /usr/include/eigen3/Eigen/src/Core/MatrixBase.h \
- /usr/include/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h \
- /usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h \
- /usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
- /usr/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h \
+ /usr/local/include/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h \
+ /usr/local/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h \
+ /usr/local/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
+ /usr/local/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h \
  /usr/include/eigen3/Eigen/src/Core/EigenBase.h \
  /usr/include/eigen3/Eigen/src/Core/Product.h \
  /usr/include/eigen3/Eigen/src/Core/CoreEvaluators.h \
  /usr/include/eigen3/Eigen/src/Core/AssignEvaluator.h \
  /usr/include/eigen3/Eigen/src/Core/Assign.h \
  /usr/include/eigen3/Eigen/src/Core/ArrayBase.h \
- /usr/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h \
- /usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h \
+ /usr/local/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h \
+ /usr/local/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h \
  /usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h \
  /usr/include/eigen3/Eigen/src/Core/DenseStorage.h \
  /usr/include/eigen3/Eigen/src/Core/NestByValue.h \
@@ -293,10 +293,10 @@ louti/CMakeFiles/louti.dir/src/StairVector.cpp.o: \
  /usr/include/eigen3/Eigen/src/StlSupport/details.h \
  /usr/include/eigen3/Eigen/Geometry /usr/include/eigen3/Eigen/SVD \
  /usr/include/eigen3/Eigen/QR /usr/include/eigen3/Eigen/Cholesky \
- /usr/include/eigen3/Eigen/src/Cholesky/LLT.h \
- /usr/include/eigen3/Eigen/src/Cholesky/LDLT.h \
  /usr/include/eigen3/Eigen/Jacobi \
  /usr/include/eigen3/Eigen/src/Jacobi/Jacobi.h \
+ /usr/include/eigen3/Eigen/src/Cholesky/LLT.h \
+ /usr/include/eigen3/Eigen/src/Cholesky/LDLT.h \
  /usr/include/eigen3/Eigen/Householder \
  /usr/include/eigen3/Eigen/src/Householder/Householder.h \
  /usr/include/eigen3/Eigen/src/Householder/HouseholderSequence.h \
@@ -1218,19 +1218,19 @@ louti/CMakeFiles/louti.dir/src/StairVector.cpp.o: \
  /usr/include/eigen3/Eigen/Eigenvalues /usr/include/eigen3/Eigen/Geometry \
  /usr/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h \
- /usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
+ /usr/include/eigen3/Eigen/src/Eigenvalues/./HessenbergDecomposition.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h \
- /usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h \
+ /usr/include/eigen3/Eigen/src/Eigenvalues/./RealSchur.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h \
- /usr/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h \
+ /usr/include/eigen3/Eigen/src/Eigenvalues/./Tridiagonalization.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h \
- /usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h \
+ /usr/include/eigen3/Eigen/src/Eigenvalues/./ComplexSchur.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
- /usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
+ /usr/include/eigen3/Eigen/src/Eigenvalues/./RealQZ.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
  /usr/include/eigen3/Eigen/SVD /usr/include/eigen3/Eigen/LU \
  /usr/include/eigen3/Eigen/Dense /usr/include/eigen3/Eigen/Eigenvalues \

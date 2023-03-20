@@ -62,6 +62,7 @@ public:
     regions getAllRegions();
     PointCloudC getColoredCloud(int pos = 0);
     PointCloudC getColoredParts(int pos = 0);
+    PointCloudC getColoredParts(PointCloudC& output_1,int pos = 0);
 };
 
 #endif /* STAIRVECTOR_H_ */

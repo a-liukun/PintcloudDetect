@@ -1,7 +1,6 @@
 /*
  * regions.h
  *
- *  Created on: Feb 2, 2015
  *      Author: tom
  */
 

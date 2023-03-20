@@ -59,10 +59,24 @@ typedef pcl::PointCloud<PointNT> PointCloudN;
 typedef pcl::PointCloud<Normal> NormalCloud;
 typedef pcl::PointCloud<PointTC> PointCloudC;
 
+
+#include <pcl/visualization/point_cloud_color_handlers.h>
+#include <pcl/io/io.h>
+
+//pcl::PointCloud<pcl::PointXYZ>::Ptr result (new pcl::PointCloud<pcl::PointXYZ>);
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr result (new pcl::PointCloud<pcl::PointXYZRGB>);
+
 using namespace std;
 #include <pcl/filters/uniform_sampling.h>
+/*
+boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer1(new pcl::visualization::PCLVisualizer("viewer"));
 
-//boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer1(new pcl::visualization::PCLVisualizer("viewer"));
+char ch = 'a';
+void showdianyungreen(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_ptr)
+{
+  pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> color(cloud_ptr, 0, 250, 0);
+  viewer1->addPointCloud(cloud_ptr, color, "cloudgreen" + to_string(ch++));
+}*/
 
 
 //回调函数
@@ -75,13 +89,13 @@ void chatterCallback(const sensor_msgs::PointCloud2::ConstPtr cloud)
   std::vector<int> indices;
   //移除无效NaN点
   pcl::removeNaNFromPointCloud(*preorigin, *preorigin, indices);
-   
+   /*
     //体素网格下采样
     pcl::VoxelGrid<pcl::PointXYZ> sor;
     sor.setInputCloud(preorigin);
     sor.setLeafSize(0.052f, 0.052f, 0.052f);
     sor.filter(*cloud_filtered);
-    
+    */
    //均匀下采样
    // pcl::UniformSampling<pcl::PointXYZ> filter;		// 创建均匀采样对象
    // filter.setInputCloud(preorigin);					// 设置待采样点云
@@ -106,7 +120,8 @@ void chatterCallback(const sensor_msgs::PointCloud2::ConstPtr cloud)
 
 	PointCloudT::Ptr mainCloud;
 	mainCloud.reset (new PointCloudT);
-  mainCloud = cloud_filtered;
+  //mainCloud = cloud_filtered;//preorigin
+  mainCloud = preorigin;//
 
 	//return_status = pcl::io::loadPCDFile (argv[1], *mainCloud);
 	/*return_status = pcl::io::loadPCDFile (argv[1], *mainCloud);
@@ -206,9 +221,14 @@ void chatterCallback(const sensor_msgs::PointCloud2::ConstPtr cloud)
 // Printing out the results //
 
     bool colorByPart = true;
+    //bool colorByPart = false;
 
     PointCloudC resultCloud;
-
+    PointCloudC resultCloud_1;
+    //pcl::PointCloud<PointTC> resultCloud;
+    //pcl::PointCloud<pcl::PointXYZRGB>::Ptr resultCloud;
+    //pcl::PointCloud<pcl::PointXYZRGB>::Ptr resultcloud1 = resultCloud;
+    //pcl::PointCloud<PointTC> resultCloud;
     bool addBackGround = true;
     if(addBackGround)
     {
@@ -235,10 +255,10 @@ void chatterCallback(const sensor_msgs::PointCloud2::ConstPtr cloud)
 
 			float steigung = atan(stairCoefficients.dir[2] / sqrt(pow(stairCoefficients.dir[0],2) + pow(stairCoefficients.dir[1],2)));
 
-			std::cout<<std::endl<<"Step depth:   "<<round(1000*sqrt(pow(stairCoefficients.dir[0],2) + pow(stairCoefficients.dir[1],2)))<<std::endl;
-			std::cout<<"Step height:  "<<round(1000*stairCoefficients.dir[2])<<std::endl;
-			std::cout<<"Step width:   "<<round(1000*stairCoefficients.width)<<std::endl;
-			std::cout<<"Slope is:     "<<round(100*steigung/M_PI*180)<<std::endl;
+			std::cout<<std::endl<<"台阶深度:   "<<round(1000*sqrt(pow(stairCoefficients.dir[0],2) + pow(stairCoefficients.dir[1],2)))<<std::endl;
+			std::cout<<"台阶高度:  "<<round(1000*stairCoefficients.dir[2])<<std::endl;
+			std::cout<<"台阶宽度:   "<<round(1000*stairCoefficients.width)<<std::endl;
+			std::cout<<"坡度:     "<<round(100*steigung/M_PI*180)<<std::endl;
 			std::cout<<"Amount of stair parts: "<<stairCoefficients.size()<<std::endl<<std::endl;
 
 			float stairAngle = atan2(stairCoefficients.dir[1],stairCoefficients.dir[0]);
@@ -258,30 +278,20 @@ void chatterCallback(const sensor_msgs::PointCloud2::ConstPtr cloud)
 
 			std::cout<<"Angle is:     "<<round(100*atan2(stairCoefficients.dir[1],stairCoefficients.dir[0])/M_PI*180)<<std::endl;
 
-			if(colorByPart)
-				resultCloud += detectedStairs.getColoredParts(stairCoeffIdx);
+			if(colorByPart){
+				resultCloud += detectedStairs.getColoredParts(resultCloud_1,stairCoeffIdx); //局部
+				//resultCloud += detectedStairs.getColoredParts(stairCoeffIdx); //全局
+      }
 			else
 				resultCloud += detectedStairs.getColoredCloud(stairCoeffIdx);
+      
+      //pcl::copyPointCloud(resultCloud, *result); //全局  将resultCloud中的数据复制到result中
+      pcl::copyPointCloud(resultCloud_1, *result); //局部  
 		  }
-    }
- /*
-  //清空画图累计变量
-  ch = 0;
-  //去除无效点
-  std::vector<int> indices;
-  //移除无效NaN点
-  pcl::removeNaNFromPointCloud(*preorigin, *preorigin, indices);
-  if (preorigin->points.size() > 5000)
-  {
-    cout << "----------------正在进行一次楼梯检测------------------" << endl;
-    flagloutiG = DetectGlobe(preorigin);
-    return;
-  }
-  else
-    return;
-    */
-}
 
+    }
+
+}
 
 /*
 float r_w, r_x, r_y, r_z,p_x, p_y, p_z;
@@ -309,45 +319,44 @@ void odometryHandler(const nav_msgs::Odometry::ConstPtr& odomMsg)
   Eigen::Vector3d p3q = T2w*p3;  
 }
 */
+
 //主函数
+
 int main(int argc, char **argv)
-{
+{ 
   ros::Publisher marker_pub;
   ros::init(argc, argv, "detect_louti");
   ros::NodeHandle nh;
   //ros::Subscriber sub = nh.subscribe("/hesai/pandar", 1, chatterCallback);
-  //ros::Subscriber sub = nh.subscribe("/velodyne_points", 1, chatterCallback);
-  ros::Subscriber sub = nh.subscribe("/rslidar_points", 1, chatterCallback);
-  // ros::Publisher pcl_pub =nh.advertise<sensor_msgs::PointCloud2>("pcl_output1", 1);
- 
+  ros::Subscriber sub = nh.subscribe("/velodyne_points", 1, chatterCallback);
+  //ros::Subscriber sub = nh.subscribe("/rslidar_points", 1, chatterCallback);
+  //ros::Publisher pcl_pub =nh.advertise<sensor_msgs::PointCloud2>("pcl_output1", 1);
+  
   //ros::Subscriber subcoordinate = nh.subscribe("lio_sam/mapping/odometry_incremental", 1, odometryHandler);
-  marker_pub = nh.advertise<visualization_msgs::Marker>("visualization_marker_louti", 1);
-  //定义循环执行的频率为10hz，即一秒执行10次，一次执行整个消息队列长度的回调函数
-  //也就是一秒执行10帧，如果发布者发布消息的频率大于10hz将丢包
+  //marker_pub = nh.advertise<visualization_msgs::Marker>("visualization_marker_louti", 1);
+  
+  marker_pub = nh.advertise<sensor_msgs::PointCloud2>("/my_pointcloud_topic", 1);
+
+
+  //ros::spin();
   ros::Rate loop_rate(10);
 
-  //检测一次楼梯
-  // while(ros::ok( )&&!flagloutiG)
-
-  //持续检测楼梯
   while (ros::ok())
   {
+
+    pcl::PointCloud<pcl::PointXYZRGB> resultCloud1 =*result;
+    cout <<"result size is " << result->size() <<endl;
+    cout <<"result size is " << resultCloud1.size() <<endl;
+    // 将 resultCloud 转换为 ROS 的点云消息类型 sensor_msgs::PointCloud2
+    sensor_msgs::PointCloud2 cloud_msg;
+    pcl::toROSMsg(resultCloud1, cloud_msg);
+    // 设置消息的元数据
+    cloud_msg.header.frame_id = "map";
+    cloud_msg.header.stamp = ros::Time::now();
+    // 发布点云消息
+    marker_pub.publish(cloud_msg);
     //执行一次回调函数
     ros::spinOnce();
-    /*
-    //刷新画板
-    if (STEP >= (char)64 && STEP <= 'Y')
-    {
-      viewer1->spinOnce(0.000000000001);
-      // 移除当前所有点云
-      viewer1->removeAllPointClouds();
-      //移除一片点云，参数为点云的名字
-      // viewer->removePointCloud("cloud");
-      //移除窗口中所有形状
-      viewer1->removeAllShapes();
-      // viewer1->remove
-    }
-    */
     //休眠
     loop_rate.sleep();
   }

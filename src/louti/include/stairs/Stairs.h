@@ -73,7 +73,8 @@ public:
     std::vector<int> planeLabels;
 
     void getColoredParts(PointCloudC& output);
-
+	void getColoredParts(PointCloudC& output,pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud_ptr);
+	void getColoredParts(PointCloudC& output_1,PointCloudC& output);
     inline segmentPatch at(int pos)
     {
     	return stairParts.at(pos);

@@ -47,6 +47,13 @@ PointCloudC StairVector::getColoredParts(int pos)
 	return output;
 }
 
+PointCloudC StairVector::getColoredParts(PointCloudC& output_1,int pos)
+{
+	PointCloudC output;
+	//PointCloudC output_1;
+	stairVector.at(pos).getColoredParts(output_1,output);
+	return output;
+}
 void StairVector::sort()
 {
 	std::sort(stairVector.begin(), stairVector.end());
